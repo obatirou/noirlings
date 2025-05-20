@@ -2,15 +2,12 @@
 // use the `hint` watch subcommand for a hint.
 // Default Trait Methods: This exercise shows how to work with default trait methods
 
-// I AM NOT DONE
-
-
 trait Counter {
     fn increment(self) -> Self;
-    
+
     // This is a default implementation that calls increment twice
     fn increment_twice(self) -> Self {
-            self.increment().increment()
+        self.increment().increment()
     }
 }
 
@@ -24,6 +21,7 @@ struct Number {
 impl Counter for Number {
     // Add your implementation here
     fn increment(self) -> Self {
+        Number { value: self.value + 1 }
     }
 }
 

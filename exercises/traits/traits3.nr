@@ -2,14 +2,12 @@
 // use the `hint` watch subcommand for a hint.
 // Generic Traits: This exercise demonstrates how to work with generic traits
 
-// I AM NOT DONE
-
 trait Convert<T> {
     fn convert(self) -> T;
 }
 
 struct Celsius {
-temp: Field,
+    temp: Field,
 }
 
 struct Fahrenheit {
@@ -19,7 +17,9 @@ struct Fahrenheit {
 // TODO: Implement Convert trait to convert Celsius to Fahrenheit
 // Formula: F = (C X 9/5) + 32
 impl Convert<Fahrenheit> for Celsius {
-    // Add your implementation here
+    fn convert(self) -> Fahrenheit {
+        Fahrenheit { temp: self.temp * 9 / 5 + 32 }
+    }
 }
 
 #[test]

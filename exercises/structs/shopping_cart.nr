@@ -1,8 +1,6 @@
 // shopping_cart.nr
 // use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 struct Product {
     id: Field,
     price: Field,
@@ -18,6 +16,21 @@ impl Cart {
     // TODO: Implement the following methods for Cart:
     // 1. new() - creates an empty cart with zero items
     // 2. add_product(product: Product) -> bool - adds a product if total_items < 3
+    fn new() -> Cart {
+        let product = Product { id: 0, price: 0, quantity: 0 };
+        Cart { items: [product; 3], total_items: 0 }
+    }
+
+    fn add_product(&mut self, product: Product) -> bool {
+        if self.total_items as u64 >= 3 {
+            false
+        } else {
+            self.items[self.total_items as u64] = product;
+            self.total_items += 1;
+            true
+        }
+    }
+
     fn calculate_total(self) -> Field {
         let mut total = 0;
         for i in 0..self.total_items as u64 {
@@ -38,6 +51,7 @@ fn main() {
     assert(cart.add_product(product1));
     assert(cart.add_product(product2));
     print(cart.items);
+    print(cart.total_items);
     assert(cart.total_items == 2);
     assert(cart.calculate_total() == 35); // (10 * 2) + (15 * 1)
 }

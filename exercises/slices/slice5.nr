@@ -1,8 +1,6 @@
 // slice5.nr
 // use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 struct Transaction {
     amount: Field,
     valid: bool,
@@ -15,9 +13,7 @@ fn process_transactions(transactions: [Transaction]) -> Field {
     // 3. Calculate the total using reduce
     // 4. Return the final sum
 
-    // Your code here
-
-    sum
+    transactions.filter(|t| t.valid).map(|t| t.amount).reduce(|a, b| a + b)
 }
 
 fn main() {

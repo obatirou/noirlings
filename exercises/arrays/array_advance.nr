@@ -1,20 +1,19 @@
 // This exercise will help you understand array methods like map, fold, sort, and predicates
 
-// I AM NOT DONE
-
 fn find_even_numbers(arr: [u64; 6]) -> [u64; 6] {
     // TODO: Return an array where even numbers are kept and odd numbers are replaced with 0
     // Hint: Use the map method
+    let even_numbers = arr.map(get_even);
+    even_numbers
 }
 
 fn get_even(num: u64) -> u64 {
-  if num % 2 == 0 {
-    num
-  } else {
-  0
-  }
+    if num % 2 == 0 {
+        num
+    } else {
+        0
+    }
 }
-
 
 #[test]
 fn test_find_even_numbers() {
